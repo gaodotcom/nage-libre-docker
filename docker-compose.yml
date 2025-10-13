@@ -38,7 +38,7 @@ services:
     volumes:
       - ${SOURCES_DRUPAL_10}:/var/www/nage-libre-drupal-10:rw
       - ./volumes/web-nage-libre-10-logs:/var/log:rw
-      - ./config/php8/php.ini:/usr/local/etc/php/conf.d/90-custom.ini:rw
+      - ./config/php8/php.ini:/etc/php/8.2/fpm/conf.d/90-custom.ini:rw
     networks:
       - default
 
