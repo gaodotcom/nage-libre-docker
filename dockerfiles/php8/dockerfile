@@ -1,5 +1,5 @@
-FROM phpdockerio/php:8.2-fpm
-LABEL description="php:8.2"
+FROM phpdockerio/php:8.4-fpm
+LABEL description="php:8.4"
 
 RUN mkdir -p /srv/http/drupal
 
@@ -7,8 +7,8 @@ RUN mkdir -p /srv/http/drupal
 RUN apt-get update && apt-get install -y sudo sendmail curl vim nano telnet iproute2 iputils-ping traceroute
 #    libfreetype6-dev libjpeg62-turbo-dev libpng-dev unzip libzip-dev \
 
-RUN apt-get -y install php8.2-mysql php8.2-curl php8.2-gd php8.2-intl php8.2-imap php8.2-mcrypt php8.2-ldap \
-  php8.2-dom php8.2-gd php8.2-mbstring \
+RUN apt-get -y install php8.4-mysql php8.4-curl php8.4-gd php8.4-intl php8.4-imap php8.4-mcrypt php8.4-ldap \
+  php8.4-dom php8.4-gd php8.4-mbstring \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y mariadb-client
@@ -30,7 +30,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && composer --version
 #ADD config/php8/cndp-MISSOURI-CA.crt /usr/local/share/ca-certificates
 #RUN update-ca-certificates
-#RUN service php8.2-fpm restart
+#RUN service php8.4-fpm restart
 
 # Ajouter l'alias pour Drush
 RUN echo "alias a='alias'" >> ~/.bashrc
