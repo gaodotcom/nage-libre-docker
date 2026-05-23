@@ -5,3 +5,5 @@ volumes/nage-libre/*
 !volumes/nage-libre/.gitkeep
 volumes/web-nage-libre-10-logs/*
 volumes/nage-libre_db/*
+volumes/nage-libre_db_mysql8/*
+logs/*

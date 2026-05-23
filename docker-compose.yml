@@ -38,7 +38,7 @@ services:
     volumes:
       - ${SOURCES_DRUPAL_10}:/var/www/nage-libre-drupal-10:rw
       - ./volumes/web-nage-libre-10-logs:/var/log:rw
-      - ./config/php8/php.ini:/etc/php/8.2/fpm/conf.d/90-custom.ini:rw
+      - ./config/php8/php.ini:/etc/php/8.4/fpm/conf.d/90-custom.ini:rw
     networks:
       - default
 
@@ -73,9 +73,29 @@ services:
       - ./config/mariadb/mariadb.cnf:/etc/mysql/mariadb.cnf:rw
       - ./config/mariadb/init.sql:/data/application/init.sql
     command:
-      - --character-set-server=utf8
-      - --collation-server=utf8_general_ci
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
       - --init-file=/data/application/init.sql
+    networks:
+      - default
+
+  mysql8:
+    container_name: nage-libre_db_mysql8
+    image: mysql:8.0
+    platform: linux/amd64
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: nagelibre10
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./volumes/nage-libre_db_mysql8:/var/lib/mysql:rw
+      - ./config/mysql8/mysql8.cnf:/etc/mysql/conf.d/mysql8.cnf:rw
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
     networks:
       - default
 
