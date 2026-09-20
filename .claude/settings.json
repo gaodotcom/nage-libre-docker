@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/loicgao/sources/nage-libre/nage-libre-docker checkout main)",
+      "Bash(git -C /home/loicgao/sources/nage-libre/nage-libre-docker branch -D refactor/custom-modules-architecture)",
+      "Bash(git -C /home/loicgao/sources/nage-libre/nage-libre-docker branch --show-current)",
+      "Bash(echo \"docker: $\\(git -C /home/loicgao/sources/nage-libre/nage-libre-docker branch --show-current\\)\")",
+      "Bash(git -C /home/loicgao/sources/nage-libre/nage-libre-drupal-10 branch --show-current)"
+    ]
+  }
+}
